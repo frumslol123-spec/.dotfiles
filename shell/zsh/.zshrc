@@ -74,7 +74,11 @@ ZSH_THEME="robbyrussell"
 plugins=(git) 
 
 # User configuration
-
+#Alias nvim to v
+alias v="nvim"
+# shows current directory in prompt
+PS1='%~$ '
+echo "Battery %:" && cat /sys/class/power_supply/BAT0/capacity
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -100,5 +104,7 @@ plugins=(git)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# shows current directory in prompt
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+
 

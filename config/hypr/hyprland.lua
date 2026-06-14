@@ -225,7 +225,7 @@ hl.config({
 	kb_layout  = "se",
         kb_variant = "",
         kb_model   = "",
-        kb_options = "caps:hyper",
+        kb_options = "caps:escape",
         kb_rules   = "",
 
         follow_mouse = 1,

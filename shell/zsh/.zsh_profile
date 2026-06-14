@@ -1,26 +1,8 @@
-#Fuzzy find short script, change to keybind
-§() {
-  local file
-  file=$(fzf) || return
-  nvim "$file"
-}
-#Alias nvim to v
-alias v="nvim"
-
-#shell integration for fzf
-source <(fzf --zsh)
-
-#- displays battery % in new terminal
-echo "Battery %:" && cat /sys/class/power_supply/BAT0/capacity
-#
-#
 # The following lines were added by compinstall
-
 zstyle ':completion:*' file-sort modification
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' verbose false
 zstyle :compinstall filename '/home/frums/.zshrc'
-
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -31,5 +13,4 @@ SAVEHIST=1000
 unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
-# shows current directory in prompt
-PS1='%~$ '
+
