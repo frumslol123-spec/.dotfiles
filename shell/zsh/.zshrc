@@ -60,7 +60,7 @@ ZSH_THEME="robbyrussell"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-#  HIST_STAMPS="mm/dd"
+# HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -70,15 +70,22 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+ plugins=(git zsh-autosuggestions zsh-syntax-highlighting) 
 
-plugins=(git) 
+ source $ZSH/oh-my-zsh.sh
 
 # User configuration
-#Alias nvim to v
-alias v="nvim"
-# shows current directory in prompt
-PS1='%~$ '
-echo "Battery %:" && cat /sys/class/power_supply/BAT0/capacity
+#claude
+fzf-home-nvim() {
+        fd --type f --hidden --exclude .git --print0 . ~ \
+                | fzf --read0 --print0 \
+                | xargs -0 -r -o nvim
+        zle reset-prompt
+}
+zle -N fzf-home-nvim
+bindkey '^F' fzf-home-nvim
+
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -101,10 +108,7 @@ echo "Battery %:" && cat /sys/class/power_supply/BAT0/capacity
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
+#
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# shows current directory in prompt
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
-
-

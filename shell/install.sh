@@ -28,8 +28,6 @@ link "$DOTFILES/config/nvim" "$HOME/.config/nvim"
 
 #zsh
 link "$DOTFILES/shell/zsh/.zshrc" "$HOME/.zshrc"
-link "$DOTFILES/shell/zsh/.zsh_profile" "$HOME/.zsh_profile"
-
 #git
 link "$DOTFILES/.gitconfig" "$HOME/.gitconfig"
 
