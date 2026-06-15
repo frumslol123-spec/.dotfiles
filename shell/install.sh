@@ -35,6 +35,6 @@ link "$DOTFILES/.gitconfig" "$HOME/.gitconfig"
 link "$DOTFILES/config/hypr" "$HOME/.config/hypr"
 
 #Tmux
-link "$DOTFILES/config/tmux" "$HOME/.config/tmux"
+link "$DOTFILES/config/tmux/.tmux.conf" "$HOME/.tmux.conf"
 echo "Done."
 
