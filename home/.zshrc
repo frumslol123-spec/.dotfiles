@@ -155,3 +155,4 @@ KEYTIMEOUT=1                     # snappy Escape (see note below)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH="$HOME/.local/bin:$PATH"
