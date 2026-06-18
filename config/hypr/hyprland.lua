@@ -28,7 +28,7 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-local terminal    = "alacritty"
+local terminal    = "ghostty"
 local fileManager = "dolphin"
 local menu        = "hyprlauncher"
 
@@ -223,7 +223,7 @@ hl.config({
 hl.config({
     input = {
 	kb_layout  = "se",
-        kb_variant = "",
+        kb_variant = "nodeadkeys",
         kb_model   = "",
         kb_options = "caps:escape",
         kb_rules   = "",
