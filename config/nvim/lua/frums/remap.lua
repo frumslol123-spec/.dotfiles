@@ -85,8 +85,16 @@ vim.keymap.set(
     "oif err != nil {<CR>}<Esc>O.logger.Error(\"error\", \"error\", err)<Esc>F.;i"
 )
 
--- SPACE SPACE sources the file!!!
+-- SPACE SPACE sources the current file (Lua/Vim config only)
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+    local ft = vim.bo.filetype
+    if ft == "lua" or ft == "vim" then
+        vim.cmd("source %")
+        vim.notify("Sourced " .. vim.fn.expand("%:t"))
+    else
+        vim.notify(
+            ft .. " files can't be sourced in Neovim — run it in your shell",
+            vim.log.levels.WARN
+        )
+    end
 end)
-

@@ -84,7 +84,50 @@ fzf-home-nvim() {
 }
 zle -N fzf-home-nvim
 bindkey '^F' fzf-home-nvim
+# ── Oxocarbon palette ────────────────────────────────────────────────
+# base00 #161616  base03 #525252  base05 #f2f4f8  blue   #78a9ff
+# teal   #08bdba  cyan   #33b1ff  green  #42be65  purple #be95ff
+# magenta#ee5396  pink   #ff7eb6
 
+# Prompt (oxocarbon). Set ZSH_THEME="" up top so it doesn't fight this.
+ZSH_THEME_GIT_PROMPT_PREFIX="%F{#525252}on %F{#be95ff}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%f "
+ZSH_THEME_GIT_PROMPT_DIRTY=" %F{#ee5396}✗%f"
+ZSH_THEME_GIT_PROMPT_CLEAN=" %F{#42be65}✓%f"
+PROMPT='%F{#78a9ff}%~%f $(git_prompt_info)%(?.%F{#42be65}.%F{#ee5396})❯%f '
+
+# zsh-syntax-highlighting → oxocarbon
+ZSH_HIGHLIGHT_STYLES[default]='fg=#f2f4f8'
+ZSH_HIGHLIGHT_STYLES[command]='fg=#78a9ff'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#33b1ff'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#08bdba'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#be95ff'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#be95ff'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#dde1e6'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#42be65'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#42be65'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=#ff7eb6'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#525252'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#ee5396'
+
+# zsh-autosuggestions: muted gray suggestion
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#525252'
+
+# fzf colors (matches your ^F launcher)
+export FZF_DEFAULT_OPTS="
+  --color=bg+:#262626,bg:#161616,spinner:#08bdba,hl:#33b1ff
+  --color=fg:#dde1e6,header:#33b1ff,info:#be95ff,pointer:#08bdba
+  --color=marker:#42be65,fg+:#f2f4f8,prompt:#78a9ff,hl+:#33b1ff"
+
+# ── Escape clears the current line (like Ctrl-C) ─────────────────────
+function _clear-input-line() {
+  BUFFER=""
+  CURSOR=0
+  zle reset-prompt
+}
+zle -N _clear-input-line
+bindkey '^[' _clear-input-line   # ^[ is Escape
+KEYTIMEOUT=1                     # snappy Escape (see note below)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
